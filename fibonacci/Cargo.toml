@@ -1,5 +1,5 @@
 [package]
-name = "fibonacci_bigint"
+name = "fibonacci"
 version = "0.1.0"
 authors = ["Marty Moradian <metaphorshearllc@gmail.com>"]
 

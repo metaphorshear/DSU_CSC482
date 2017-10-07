@@ -1,7 +1,7 @@
 //import functions from sort files
-extern crate hw1_sort;
-use hw1_sort::hw1_bubblesort::bubble_sort;
-use hw1_sort::hw1_mergesort::merge_sort;
+extern crate sort;
+use sort::bubblesort::bubble_sort;
+use sort::mergesort::merge_sort;
 //needed to grab command-line args
 use std::env;
 //needed for file i/o

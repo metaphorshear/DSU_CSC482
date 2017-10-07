@@ -1,2 +1,2 @@
-pub mod hw1_bubblesort;
-pub mod hw1_mergesort;
+pub mod bubblesort;
+pub mod mergesort;

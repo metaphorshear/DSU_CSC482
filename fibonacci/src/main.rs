@@ -1,11 +1,9 @@
-extern crate fibonacci_bigint;
-extern crate num;
-use fibonacci_bigint::fibonacci::*;
-use fibonacci_bigint::bench::*;
-use num::bigint::BigUint;
+extern crate fibonacci;
+use fibonacci::fibonacci::*;
+use fibonacci::bench::*;
 use std::env;
 
-fn bench_n(f: &Fn(u64)->BigUint, start: u64, end: u64){
+fn bench_n(f: &Fn(u64)->u64, start: u64, end: u64){
     println!("#N\t\tTime taken (ns)");
     println!("#--------------------");
     for n in start..end {
@@ -14,18 +12,11 @@ fn bench_n(f: &Fn(u64)->BigUint, start: u64, end: u64){
     }
 }
 
-fn bench_low_n(f: &Fn(u64)->BigUint){
-    bench_n(f, 0, 51);
+fn bench_low_n(f: &Fn(u64)->u64){
+    bench_n(f, 0, 54);
 }
-
-fn bench_high_n(f: &Fn(u64)->BigUint){
-    ///For benching all but the recursive version
-    bench_n(f, 51, 20000);
-}
-
-fn bench_really_high_n(f: &Fn(u64)->BigUint){
-    ///For benching the iterative and matrix versions
-    bench_n(f, 20000, 100000);
+fn bench_high_n(f: &Fn(u64)->u64){
+    bench_n(f, 54, 93);
 }
 
 fn bench(){
@@ -33,18 +24,18 @@ fn bench(){
 //    println!("r = [");
 //    bench_low_n(&fib_recursive);
 //    println!("];");
-//
-//    println!("d = [");
-//    bench_low_n(&fib_recursive_with_cache_wrapper);
-//    println!("];");
-//
-//    println!("i_big = [");
-//    bench_low_n(&fib_loop);
-//    println!("];");
-//
-//    println!("m_big = [");
-//    bench_low_n(&fib_matrix);
-//    println!("];");
+
+    println!("d = [");
+    bench_low_n(&fib_recursive_with_cache_wrapper);
+    println!("];");
+
+    println!("i = [");
+    bench_low_n(&fib_loop);
+    println!("];");
+
+    println!("m = [");
+    bench_low_n(&fib_matrix);
+    println!("];");
 
     println!("d_big = [");
     bench_high_n(&fib_recursive_with_cache_wrapper);
@@ -57,15 +48,6 @@ fn bench(){
     println!("m_big = [");
     bench_high_n(&fib_matrix);
     println!("];");
-
-    println!("i_huge = [");
-    bench_really_high_n(&fib_loop);
-    println!("];");
-
-    println!("m_huge = [");
-    bench_really_high_n(&fib_matrix);
-    println!("];");
-
 }
 
 
