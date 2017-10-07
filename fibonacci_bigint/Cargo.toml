@@ -1,0 +1,8 @@
+[package]
+name = "hw3_fibonacci_challenge"
+version = "0.1.0"
+authors = ["Marty Moradian <metaphorshearllc@gmail.com>"]
+
+[dependencies]
+num = "0.1.40"
+time = "0.1"
